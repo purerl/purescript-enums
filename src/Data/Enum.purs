@@ -54,16 +54,15 @@ instance enumBoolean :: Enum Boolean where
   pred _= Nothing
 
 instance enumInt :: Enum Int where
-  succ n = if n < top then Just (n + 1) else Nothing
-  pred n = if n > bottom then Just (n - 1) else Nothing
+  succ n = Just (n + 1)
+  pred n = Just (n - 1)
 
 instance enumChar :: Enum Char where
   succ = defaultSucc charToEnum toCharCode
   pred = defaultPred charToEnum toCharCode
 
 charToEnum :: Int -> Maybe Char
-charToEnum n | n >= bottom && n <= top = Just $ fromCharCode n
-charToEnum _ = Nothing
+charToEnum n = Just $ fromCharCode n
 
 instance enumUnit :: Enum Unit where
   succ = const Nothing
