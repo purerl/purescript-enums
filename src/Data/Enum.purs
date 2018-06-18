@@ -297,8 +297,7 @@ diag :: forall a. a -> Tuple a a
 diag a = Tuple a a
 
 charToEnum :: Int -> Maybe Char
-charToEnum n | n >= bottom && n <= top = Just (fromCharCode n)
-charToEnum _ = Nothing
+charToEnum n = Just (fromCharCode n)
 
 foreign import toCharCode :: Char -> Int
 foreign import fromCharCode :: Int -> Char
